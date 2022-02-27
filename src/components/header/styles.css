@@ -1,0 +1,20 @@
+header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: darkorange;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    height: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid white;
+}

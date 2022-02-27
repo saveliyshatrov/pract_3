@@ -1,0 +1,9 @@
+.third_page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100% - 120px);
+    background-color: darkorange;
+    color: white;
+}

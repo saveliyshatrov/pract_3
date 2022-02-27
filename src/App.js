@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import { BrowserRouter, Link, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
+import { FirstPage, Footer, Header, SecondPage, ThirdPage } from './components';
 
 function App() {
+  const [selected, setSelected] = useState('');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header>
+        <Link to={'first_page'} 
+              style={{backgroundColor: selected === 'first_page'? 'white': 'transparent', 
+                      color: selected === 'first_page'? 'black' : 'white'}}>
+              First page
+        </Link>
+        <Link to={'second_page'}
+              style={{backgroundColor: selected === 'second_page'? 'white': 'transparent', 
+                      color: selected === 'second_page'? 'black' : 'white'}}>
+              Second page
+        </Link>
+        <Link to={'third_page'} 
+              style={{backgroundColor: selected === 'third_page'? 'white': 'transparent', 
+              color: selected === 'third_page'? 'black' : 'white'}}>
+              Third page
+        </Link>
+      </Header>
+      <Routes>
+        <Route exact path={'/first_page'} element={<FirstPage setSelected={setSelected}/>}/>
+        <Route path={'/second_page'} element={<SecondPage setSelected={setSelected}/>}/>
+        <Route path={'/third_page'} element={<ThirdPage setSelected={setSelected}/>}/>
+        <Route path="/" element={<Navigate replace to="/first_page" />} />
+      </Routes>
+      <Footer/>
+    </BrowserRouter>
   );
 }
 
